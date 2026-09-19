@@ -1,0 +1,27 @@
+# ════════════════════════════════════════════════════════════════
+# EM'S Soft-Tech Solutions Kenya — robots.txt
+# Place at: https://yourdomain.co.ke/robots.txt
+# ════════════════════════════════════════════════════════════════
+
+# ── Default: allow all well-behaved crawlers ──
+User-agent: *
+Allow: /
+
+# ── Block admin/temp areas (add here if you create any) ──
+# Disallow: /admin/
+# Disallow: /tmp/
+# Disallow: /private/
+
+# ── Specifically welcome major search engines ──
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# ── Sitemap location ──
+# REPLACE "yourdomain.co.ke" with your actual domain before going live.
+Sitemap: https://yourdomain.co.ke/sitemap.xml

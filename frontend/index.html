@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<!--
+  ══════════════════════════════════════════════════════════════════
+  EM'S Soft-Tech Solutions Kenya — Official Website
+  ──────────────────────────────────────────────────────────────────
+  STYLE      : A · Corporate Trust (default)  | B · Neo Dark | C · Editorial
+  THEME      : Light (default)                | Dark toggle available
+  BUILT      : Single-file HTML + CSS + JS. No build step. No dependencies.
+  ──────────────────────────────────────────────────────────────────
+  QUICK REPLACE CHECKLIST (search for these markers):
+   [ HERO IMAGE ] ................. hero section image
+   [ TEAM / OFFICE PHOTO ] ........ about section images (3 slots)
+   [ WEBSITE SCREENSHOT N ] ....... portfolio images (8 slots)
+   [ PROJECT TITLE ] .............. portfolio card titles (edit data-title too)
+   [ PLACEHOLDER REVIEW ] ......... 3 testimonial cards
+   [ CERTIFICATION N ] ............ about → certifications chips
+   href="#" in .socials ........... footer social links
+   data-count="N" ................. stats numbers
+  ──────────────────────────────────────────────────────────────────
+  CONTACT (already set):
+   Phone / WhatsApp ... 0795 716 730  (+254795716730)
+   Email .............. michaelkey394@gmail.com
+   Location ........... Kimbo, Ruiru, Kenya
+   Hours .............. Mon–Sat 8:00am–8:00pm · Sun closed
+  ══════════════════════════════════════════════════════════════════
+-->
+<html lang="en" data-theme="light" data-style="a">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EM'S Soft-Tech Solutions Kenya | Software Company in Ruiru</title>
+<meta name="description" content="EM'S Soft-Tech Solutions Kenya — website design, mobile apps, graphic design, digital marketing, IT support, cyber services, SEO and work automation systems. Based in Kimbo, Ruiru. Mon–Sat 8am–8pm." />
+<meta name="theme-color" content="#1e40af" />
+
+<!-- Open Graph (REPLACE og:image with your real 1200x630 image) -->
+<meta property="og:title" content="EM'S Soft-Tech Solutions Kenya" />
+<meta property="og:description" content="Build. Automate. Grow. Software solutions from Kimbo, Ruiru." />
+<meta property="og:type" content="website" />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231e40af'/><text x='50' y='68' font-size='54' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'>E</text></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>
+(function(){
+  // Default style = A (Corporate). Default theme = light (ignores OS preference).
+  var s = localStorage.getItem('ems-style') || 'a';
+  var t = localStorage.getItem('ems-theme') || 'light';
+  document.documentElement.setAttribute('data-style', s);
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+</head>
+
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#home" class="logo">
+      <span class="logo-mark">E</span>
+      <!-- REPLACE the letter above with <img src="logo.png" alt="EM'S Soft-Tech"> -->
+      <span class="logo-text">
+        <b>EM'S Soft-Tech</b>
+        <span>Solutions Kenya</span>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navMenu">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#quote" class="btn btn-primary btn-sm mobile-cta">Get a Free Quote</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+      <a href="#quote" class="btn btn-primary btn-sm">Get a Free Quote</a>
+      <button class="hamburger" id="navToggle" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">Software Company · Kimbo, Ruiru</span>
+      <h1>Build. Automate.<br><span class="grad-text">Grow.</span></h1>
+      <p class="lead">
+        EM'S Soft-Tech Solutions Kenya designs websites, mobile apps and automation
+        systems that help Kenyan businesses run faster, look sharper and sell more.
+      </p>
+      <div class="hero-cta">
+        <a href="#quote" class="btn btn-primary">
+          Get a Free Quote
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="https://wa.me/254795716730?text=Hi%20EM'S%20Soft-Tech%2C%20I'd%20like%20to%20enquire." target="_blank" rel="noopener" class="btn btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2s-.7.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5s0-.4 0-.5c-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2A10 10 0 002 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4A10 10 0 1012 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+      <div class="hero-trust">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Founded 2025</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Ruiru-based, Kenya-wide</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Mon–Sat, 8am–8pm</div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="mockup">
+        <div class="mockup-bar"><i></i><i></i><i></i><span>emssolutions.co.ke</span></div>
+        <div class="ph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
+          [ HERO IMAGE ]
+          <small>Recommended 1200 × 900 px</small>
+        </div>
+      </div>
+      <div class="float-card f1"><span class="dot"></span><div>Projects Delivered<small>Since 2025</small></div></div>
+      <div class="float-card f2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        <div>Work Automation<small>Save hours weekly</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS  —  REPLACE numbers with your real figures
+     ============================================================ -->
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat reveal"><b data-count="8">0</b><span>Core Services</span></div>
+    <div class="stat reveal"><b data-count="25" data-suffix="+">0</b><span>Projects Delivered</span></div>
+    <div class="stat reveal"><b data-count="20" data-suffix="+">0</b><span>Happy Clients</span></div>
+    <div class="stat reveal"><b data-count="98" data-suffix="%">0</b><span>Client Satisfaction</span></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="eyebrow">About Us</span>
+      <h2>A young,Future-paced tech team based in Ruiru.</h2>
+      <p style="color:var(--muted);margin-top:1rem">
+        EM'S Soft-Tech Solutions Kenya was founded in 2025 by our CEO Michael Muiru to make professional
+        technology affordable and accessible to Kenyan businesses, startups,
+        schools and organisations. We don't just write code — we solve real
+        business problems.
+      </p>
+      <ul class="about-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Fast turnaround</b> Clear timelines, weekly updates, no endless waiting.</div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><div><b>Built for Kenya</b> M-Pesa-ready, mobile-first, low-data friendly designs.</div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/><path d="M9.5 12l2 2 3.5-4"/></svg><div><b>Honest pricing</b> No hidden fees, no jargon — just clear quotes.</div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><div><b>Support that answers</b> Reach us on WhatsApp or phone, Mon–Sat, 8am–8pm.</div></li>
+      </ul>
+      <div class="certs">
+        <h4>Certifications &amp; Partnerships</h4>
+        <!-- REPLACE these chips with your real certifications/partners -->
+        <div class="cert-row">
+          <span class="cert-chip">[ CERTIFICATION 1 ]</span>
+          <span class="cert-chip">[ CERTIFICATION 2 ]</span>
+          <span class="cert-chip">[ PARTNER LOGO ]</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal about-visual">
+      <!-- REPLACE with <img src="team.jpg" alt="Our team"> etc. -->
+      <div class="ph">[ TEAM / OFFICE PHOTO ]<small>600 × 800 px</small></div>
+      <div class="ph">[ WORKSHOP ]<small>500 × 380 px</small></div>
+      <div class="ph">[ SETUP ]<small>500 × 380 px</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section id="services" style="background:var(--bg-2);border-block:1px solid var(--border)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2>Eight services. One reliable team.</h2>
+      <p>Website or app, or a system that runs your whole operation — we've got you covered.</p>
+    </div>
+    <div class="services-grid">
+      <article class="svc reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 9h20M6 13h6M8 21h8"/></svg></div><h3>Website Design &amp; Development</h3><p>Fast, mobile-first websites and web apps — from business pages to full e-commerce stores.</p><ul><li>Business</li><li>E-commerce</li><li>Web Apps</li></ul></article>
+      <article class="svc reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.6"/><path d="M11 18.5h2"/></svg></div><h3>Mobile App Development</h3><p>Android and cross-platform apps built around how your customers and staff actually work.</p><ul><li>Android</li><li>Cross-platform</li><li>M-Pesa</li></ul></article>
+      <article class="svc reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9.5" r="1.2"/><circle cx="15" cy="9.5" r="1.2"/><circle cx="9.5" cy="15" r="1.2"/></svg></div><h3>Graphic Design</h3><p>Logos, brand kits, posters, flyers and social media creatives that make you look established.</p><ul><li>Logo</li><li>Flyers</li><li>Social</li></ul></article>
+      <article class="svc reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l14-6v14L3 13z"/><path d="M6 12v6a2 2 0 002 2h1a2 2 0 002-2v-3"/></svg></div><h3>Digital Marketing</h3><p>Campaigns that actually reach people — social media management, paid ads and content strategy.</p><ul><li>Social</li><li>Meta Ads</li><li>Content</li></ul></article>
+      <article class="svc reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 015 5v3a4 4 0 01-4 4h-2a4 4 0 01-4-4V7a5 5 0 015-5z"/><path d="M4 20a8 8 0 0116 0"/></svg></div><h3>IT Support Services</h3><p>On-site and remote support — troubleshooting, maintenance, networking and hardware setup.</p><ul><li>Remote</li><li>Networking</li><li>CCTV</li></ul></article>
+      <article class="svc reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6z"/><path d="M9.5 12l2 2 3.5-4"/></svg></div><h3>Cyber Services</h3><p>Everyday digital government and online services handled quickly and correctly.</p><ul><li>eCitizen</li><li>KRA</li><li>NTSA</li></ul></article>
+      <article class="svc reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg></div><h3>Smart SEO</h3><p>Get found on Google. We optimise your site, content and local listing so customers come to you.</p><ul><li>Local SEO</li><li>Keywords</li><li>GBP</li></ul></article>
+      <article class="svc reveal"><div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></div><h3>Work Automation Systems</h3><p>Replace manual paperwork with systems that track stock, sales, staff, clients and payments.</p><ul><li>POS</li><li>Inventory</li><li>Invoicing</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESS
+     ============================================================ -->
+<section class="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">How We Work</span>
+      <h2>Simple, transparent process</h2>
+      <p>From your first message to final handover — you'll always know what's happening.</p>
+    </div>
+    <div class="process-grid">
+      <div class="step-card reveal"><div class="step-num">1</div><h3>Tell Us Your Idea</h3><p>Fill the free quote form or WhatsApp us. We listen and ask the right questions.</p></div>
+      <div class="step-card reveal"><div class="step-num">2</div><h3>Get a Clear Quote</h3><p>You receive a written breakdown of scope, timeline and cost. No surprises.</p></div>
+      <div class="step-card reveal"><div class="step-num">3</div><h3>We Build It</h3><p>You get progress updates and previews at every milestone so nothing is a shock.</p></div>
+      <div class="step-card reveal"><div class="step-num">4</div><h3>Launch &amp; Support</h3><p>We deploy, train your team and stay available for maintenance and upgrades.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PORTFOLIO
+     ============================================================ -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Our Work</span>
+      <h2>Projects grouped by service</h2>
+      <p>Filter by category. Every image below is a placeholder — swap in your real screenshots.</p>
+    </div>
+
+    <div class="filters reveal">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="web">Websites</button>
+      <button class="filter-btn" data-filter="app">Mobile Apps</button>
+      <button class="filter-btn" data-filter="design">Graphic Design</button>
+      <button class="filter-btn" data-filter="marketing">Digital Marketing</button>
+      <button class="filter-btn" data-filter="seo">Smart SEO</button>
+      <button class="filter-btn" data-filter="automation">Automation</button>
+      <button class="filter-btn" data-filter="it">IT Support</button>
+      <button class="filter-btn" data-filter="cyber">Cyber Services</button>
+    </div>
+
+    <div class="port-grid">
+      <article class="p-item reveal" data-cat="web" data-title="[ PROJECT TITLE — Business Website ]" data-desc="[ REPLACE: 2–3 sentences about the client, the problem and the result. ]">
+        <div class="ph">[ WEBSITE SCREENSHOT 1 ]<small>1200 × 800 px</small></div>
+        <div class="p-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6M11 8v6M8 11h6"/></svg></div>
+        <div class="p-body"><div class="p-cat">Website Design &amp; Development</div><h3>[ Project Title ]</h3><p>[ Short one-line result or client type ]</p></div>
+      </article>
+      <article class="p-item reveal" data-cat="web" data-title="[ PROJECT TITLE — E-commerce Store ]" data-desc="[ REPLACE with real project details. ]">
+        <div class="ph">[ WEBSITE SCREENSHOT 2 ]<small>1200 × 800 px</small></div>
+        <div class="p-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6M11 8v6M8 11h6"/></svg></div>
+        <div class="p-body"><div class="p-cat">Website Design &amp; Development</div><h3>[ Project Title ]</h3><p>[ Short one-line result or client type ]</p></div>
+      </article>
+      <article class="p-item reveal" data-cat="app" data-title="[ PROJECT TITLE — Android App ]" data-desc="[ REPLACE with real project details. ]">
+        <div class="ph">[ APP SCREEN 1 ]<small>900 × 800 px</small></div>
+        <div class="p-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6M11 8v6M8 11h6"/></svg></div>
+        <div class="p-body"><div class="p-cat">Mobile App Development</div><h3>[ Project Title ]</h3><p>[ Short one-line result or client type ]</p></div>
+      </article>
+      <article class="p-item reveal" data-cat="design" data-title="[ PROJECT TITLE — Brand Identity ]" data-desc="[ REPLACE with real project details. ]">
+        <div class="ph">[ BRAND / LOGO MOCKUP ]<small>1200 × 800 px</small></div>
+        <div class="p-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6M11 8v6M8 11h6"/></svg></div>
+        <div class="p-body"><div class="p-cat">Graphic Design</div><h3>[ Project Title ]</h3><p>[ Short one-line result or client type ]</p></div>
+      </article>
+      <article class="p-item reveal" data-cat="marketing" data-title="[ PROJECT TITLE — Social Campaign ]" data-desc="[ REPLACE with real campaign results. ]">
+        <div class="ph">[ CAMPAIGN CREATIVE ]<small>1200 × 800 px</small></div>
+        <div class="p-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6M11 8v6M8 11h6"/></svg></div>
+        <div class="p-body"><div class="p-cat">Digital Marketing</div><h3>[ Project Title ]</h3><p>[ Short one-line result or client type ]</p></div>
+      </article>
+      <article class="p-item reveal" data-cat="seo" data-title="[ PROJECT TITLE — Local SEO ]" data-desc="[ REPLACE with real ranking / traffic results. ]">
+        <div class="ph">[ SEO RANKING REPORT ]<small>1200 × 800 px</small></div>
+        <div class="p-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6M11 8v6M8 11h6"/></svg></div>
+        <div class="p-body"><div class="p-cat">Smart SEO</div><h3>[ Project Title ]</h3><p>[ Short one-line result or client type ]</p></div>
+      </article>
+      <article class="p-item reveal" data-cat="automation" data-title="[ PROJECT TITLE — POS / Inventory System ]" data-desc="[ REPLACE with real project details. ]">
+        <div class="ph">[ SYSTEM DASHBOARD ]<small>1200 × 800 px</small></div>
+        <div class="p-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6M11 8v6M8 11h6"/></svg></div>
+        <div class="p-body"><div class="p-cat">Work Automation Systems</div><h3>[ Project Title ]</h3><p>[ Short one-line result or client type ]</p></div>
+      </article>
+      <article class="p-item reveal" data-cat="it" data-title="[ PROJECT TITLE — CCTV Installation ]" data-desc="[ REPLACE with real project details. ]">
+        <div class="ph">[ CCTV SETUP PHOTO ]<small>1200 × 800 px</small></div>
+        <div class="p-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6M11 8v6M8 11h6"/></svg></div>
+        <div class="p-body"><div class="p-cat">IT Support Services</div><h3>[ Project Title ]</h3><p>[ Short one-line result or client type ]</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ⚠ ALL REVIEWS BELOW ARE PLACEHOLDERS — REPLACE WITH REAL ONES
+     ============================================================ -->
+<section class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Client Reviews</span>
+      <h2>What clients say</h2>
+      <p>All reviews below are placeholders — replace with your real Google reviews later.</p>
+    </div>
+
+    <div class="t-viewport reveal">
+      <div class="t-track" id="tTrack">
+        <div class="t-slide"><div class="t-card">
+          <div class="t-stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg></div>
+          <p class="t-quote">"[ PLACEHOLDER REVIEW ] They built our website in under two weeks and it looks far better than what we were quoted elsewhere. Communication on WhatsApp was fast and clear."</p>
+          <div class="t-person"><div class="t-avatar">GW</div><div style="text-align:left"><b>Grace W.</b><span>Boutique Owner · Ruiru</span></div></div>
+        </div></div>
+        <div class="t-slide"><div class="t-card">
+          <div class="t-stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg></div>
+          <p class="t-quote">"[ PLACEHOLDER REVIEW ] The automation system they set up for our shop cut our stock-taking time from a full day to about an hour. Genuinely worth it."</p>
+          <div class="t-person"><div class="t-avatar">PM</div><div style="text-align:left"><b>Peter M.</b><span>Retail Shop Owner · Kimbo</span></div></div>
+        </div></div>
+        <div class="t-slide"><div class="t-card">
+          <div class="t-stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg></div>
+          <p class="t-quote">"[ PLACEHOLDER REVIEW ] Our salon now appears on Google Maps and we get walk-ins who found us online. The SEO work paid for itself."</p>
+          <div class="t-person"><div class="t-avatar">FN</div><div style="text-align:left"><b>Faith N.</b><span>Salon Owner · Kahawa Wendani</span></div></div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="t-controls reveal">
+      <button class="t-arrow" id="tPrev" aria-label="Previous review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="t-dots" id="tDots"></div>
+      <button class="t-arrow" id="tNext" aria-label="Next review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions we get a lot</h2>
+      <p>Still unsure? Send us a WhatsApp message — we reply fast.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal"><button class="faq-q">How much does a website cost?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>It depends on what you need. A simple business website costs far less than a full e-commerce store or custom web app. Use the free quote form and we'll send you a clear written price — no obligation.</p></div></div></div>
+      <div class="faq-item reveal"><button class="faq-q">How long does an App project take?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>A standard business website typically takes 1–3 weeks. Mobile apps and automation systems take longer, usually 4–10 weeks depending on complexity. We give you a firm timeline in your quote.</p></div></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Do you work with clients outside Kenya?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Yes. We're based in Kimbo, Ruiru, Kenya but we work with clients from anywhere in the world. Most projects are handled remotely over WhatsApp, calls and email, with on-site visits where needed.</p></div></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Do you offer payment plans?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Yes. Most projects are split into a deposit to begin and the balance on completion. Larger projects can be broken into milestone payments. We accept M-Pesa and bank transfer payments.</p></div></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Do you offer maintenance after launch?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div><p>Absolutely. We offer ongoing support, updates, backups and content changes. You can pay per task or take a monthly maintenance package — whichever suits you.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MULTI-STEP QUOTE FORM
+     ============================================================ -->
+<section class="quote" id="quote">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Free Quote</span>
+      <h2>Tell us what you need</h2>
+      <p>Fill this short form — takes about 60 seconds. Then send it straight to our WhatsApp or email.</p>
+    </div>
+
+    <div class="quote-shell reveal">
+      <div class="quote-top"><h3>Project Enquiry Form</h3><p>Step-by-step. No account needed. Your details stay private.</p></div>
+      <div class="quote-body">
+        <form id="quoteForm" novalidate>
+          <div class="stepbar">
+            <span class="stepbar-label" id="stepLabel">Step 1 of 4</span>
+            <div class="stepbar-fill"><i id="stepFill"></i></div>
+          </div>
+
+          <div class="fstep active" data-step="1">
+            <h4>What do you need help with?</h4>
+            <p class="hint">Select all that apply, then pick a rough budget range.</p>
+            <div class="field" id="svcField">
+              <label>Services <span class="req">*</span></label>
+              <div class="opt-grid">
+                <label class="opt"><input type="checkbox" name="services" value="Website Design & Development" data-req-group><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Website Design</label>
+                <label class="opt"><input type="checkbox" name="services" value="Mobile App Development" data-req-group><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Mobile App</label>
+                <label class="opt"><input type="checkbox" name="services" value="Graphic Design" data-req-group><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Graphic Design</label>
+                <label class="opt"><input type="checkbox" name="services" value="Digital Marketing" data-req-group><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Digital Marketing</label>
+                <label class="opt"><input type="checkbox" name="services" value="IT Support Services" data-req-group><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>IT Support</label>
+                <label class="opt"><input type="checkbox" name="services" value="Cyber Services" data-req-group><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Cyber Services</label>
+                <label class="opt"><input type="checkbox" name="services" value="Smart SEO" data-req-group><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Smart SEO</label>
+                <label class="opt"><input type="checkbox" name="services" value="Work Automation Systems" data-req-group><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Work Automation</label>
+              </div>
+              <div class="err-msg">Please select at least one service.</div>
+            </div>
+            <div class="field">
+              <label>Budget range</label>
+              <div class="pill-grid">
+                <label class="pill"><input type="radio" name="budget" value="Under KSh 20,000"><span>Under 20K</span></label>
+                <label class="pill"><input type="radio" name="budget" value="KSh 20,000 - 50,000"><span>20K – 50K</span></label>
+                <label class="pill"><input type="radio" name="budget" value="KSh 50,000 - 100,000"><span>50K – 100K</span></label>
+                <label class="pill"><input type="radio" name="budget" value="KSh 100,000 - 250,000"><span>100K – 250K</span></label>
+                <label class="pill"><input type="radio" name="budget" value="Above KSh 250,000"><span>Above 250K</span></label>
+                <label class="pill"><input type="radio" name="budget" value="Not sure yet"><span>Not sure</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="fstep" data-step="2">
+            <h4>Tell us about the project</h4>
+            <p class="hint">The more detail you give, the more accurate your quote will be.</p>
+            <div class="field">
+              <label for="details">Project description <span class="req">*</span></label>
+              <textarea id="details" data-req placeholder="Example: I run a hardware shop in Ruiru and I need a website with our products, prices and a WhatsApp order button. I also want a simple system to track stock."></textarea>
+              <div class="err-msg">Please describe your project.</div>
+            </div>
+            <div class="two-col">
+              <div class="field"><label for="timeline">Preferred timeline</label><select id="timeline"><option value="">Select…</option><option>As soon as possible</option><option>Within 2 weeks</option><option>Within 1 month</option><option>1 – 3 months</option><option>Just planning</option></select></div>
+              <div class="field"><label for="existing">Existing site/app?</label><select id="existing"><option value="">Select…</option><option>No — starting from scratch</option><option>Yes — needs a redesign</option><option>Yes — needs improvements</option><option>Yes — maintenance only</option></select></div>
+            </div>
+            <div class="field"><label for="reference">Reference websites you like (optional)</label><input type="text" id="reference" placeholder="e.g. jumia.co.ke, safaricom.co.ke"></div>
+          </div>
+
+          <div class="fstep" data-step="3">
+            <h4>How can we reach you?</h4>
+            <p class="hint">We'll only use these details to respond to your enquiry.</p>
+            <div class="two-col">
+              <div class="field"><label for="name">Your name <span class="req">*</span></label><input type="text" id="name" data-req placeholder="e.g. Michael Kimani"><div class="err-msg">Please enter your name.</div></div>
+              <div class="field"><label for="business">Business (optional)</label><input type="text" id="business" placeholder="e.g. Kimani Hardware"></div>
+            </div>
+            <div class="two-col">
+              <div class="field"><label for="email">Email <span class="req">*</span></label><input type="email" id="email" data-req data-type="email" placeholder="you@example.com"><div class="err-msg">Please enter a valid email.</div></div>
+              <div class="field"><label for="phone">Phone / WhatsApp <span class="req">*</span></label><input type="tel" id="phone" data-req placeholder="07XX XXX XXX"><div class="err-msg">Please enter your phone.</div></div>
+            </div>
+            <div class="field">
+              <label>Preferred contact method</label>
+              <div class="pill-grid">
+                <label class="pill"><input type="radio" name="contactPref" value="WhatsApp" checked><span>WhatsApp</span></label>
+                <label class="pill"><input type="radio" name="contactPref" value="Phone call"><span>Phone call</span></label>
+                <label class="pill"><input type="radio" name="contactPref" value="Email"><span>Email</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="fstep" data-step="4">
+            <h4>Review &amp; send</h4>
+            <p class="hint">Check everything looks right, then choose how to send it.</p>
+            <div class="summary" id="summary"></div>
+            <div class="form-nav" style="margin-top:0">
+              <button type="button" class="btn btn-ghost" id="backTo3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back</button>
+              <div class="right">
+                <button type="button" class="btn btn-wa" id="sendWa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2s-.7.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5s0-.4 0-.5c-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2A10 10 0 002 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4A10 10 0 1012 2z"/></svg> Send via WhatsApp</button>
+                <button type="button" class="btn btn-primary" id="sendEmail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg> Send via Email</button>
+              </div>
+            </div>
+            <div class="send-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg><span>Whichever option you choose, it opens WhatsApp or email with your enquiry already written out — just press send. We usually reply within a few hours (Mon–Sat, 8am–8pm).</span></div>
+          </div>
+
+          <div class="form-nav" id="mainNav">
+            <button type="button" class="btn btn-ghost" id="prevBtn" style="visibility:hidden"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back</button>
+            <button type="button" class="btn btn-primary" id="nextBtn">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Get In Touch</span>
+      <h2>Let's talk about your project</h2>
+      <p>Call, WhatsApp, email or visit us in Kimbo, Ruiru.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-cards reveal">
+        <div class="c-card"><div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg></div><div style="flex:1"><b>Phone / WhatsApp</b><a href="tel:+254795716730">0795 716 730</a><br><button class="copy-btn" data-copy="0795716730">Copy number</button></div></div>
+        <div class="c-card"><div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></div><div style="flex:1"><b>Email</b><a href="mailto:michaelkey394@gmail.com">michaelkey394@gmail.com</a><br><button class="copy-btn" data-copy="michaelkey394@gmail.com">Copy email</button></div></div>
+        <div class="c-card"><div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><b>Location</b><span>Kimbo, Ruiru, Kenya</span></div></div>
+        <div class="c-card"><div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><b>Working Hours</b><span>Mon – Sat: 8:00 am – 8:00 pm</span><br><span style="font-weight:600;color:var(--muted);font-size:.85rem">Sunday: Closed</span></div></div>
+        <a href="https://wa.me/254795716730" target="_blank" rel="noopener" class="btn btn-wa" style="width:100%"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2s-.7.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5s0-.4 0-.5c-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2A10 10 0 002 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4A10 10 0 1012 2z"/></svg> Message Us on WhatsApp</a>
+      </div>
+      <div class="map-frame reveal">
+        <iframe title="Kimbo, Ruiru" src="https://www.google.com/maps?q=Kimbo,+Ruiru,+Kenya&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="newsletter reveal">
+      <h3>Get tech tips for your business</h3>
+      <p>Occasional emails on websites, automation and digital growth. No spam.</p>
+      <form class="news-form" id="newsForm">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER  —  REPLACE href="#" with your real social links
+     ============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <div class="logo"><span class="logo-mark">E</span><span class="logo-text"><b>EM'S Soft-Tech</b><span>Solutions Kenya</span></span></div>
+        <p>Software company based in Kimbo, Ruiru. We build websites, apps, automation systems and handle all your IT and cyber needs.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/emstechsolutions" class="social" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.6 9.9v-7h-2.4V12h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 2.9h-2.2v7A10 10 0 0022 12z"/></svg></a>
+          <a href="https://www.instagram.com/mikemuiru_2174" class="social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.tiktok.com/@miketechems" class="social" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.8a5 5 0 01-3-2.8h-2.5v11.3a2.7 2.7 0 11-2.2-2.7V9a5.2 5.2 0 105.2 5.2V9.5a7.5 7.5 0 004.4 1.4V8.4a5 5 0 01-1.9-.6z"/></svg></a>
+          <a href="#" class="social" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11 22 14.2V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21h-4z"/></svg></a>
+          <a href="#" class="social" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.2 10h-6.4l-5-6.1L4.8 21H1.6l7.5-8.6L1.2 3h6.6l4.5 5.6zm-1.1 16h1.8L7.7 4.8H5.8z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Website Design</a></li>
+          <li><a href="#services">Mobile Apps</a></li>
+          <li><a href="#services">Graphic Design</a></li>
+          <li><a href="#services">Digital Marketing</a></li>
+          <li><a href="#services">IT Support</a></li>
+          <li><a href="#services">Cyber Services</a></li>
+          <li><a href="#services">Smart SEO</a></li>
+          <li><a href="#services">Automation</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#quote">Get a Free Quote</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact &amp; Hours</h4>
+        <ul class="foot-hours">
+          <li><span>Mon – Fri</span><b>8:00 am – 8:00 pm</b></li>
+          <li><span>Saturday</span><b>9:00 am – 3:00 pm</b></li>
+          <li><span>Sunday</span><b>Closed</b></li>
+        </ul>
+        <ul style="margin-top:1.2rem">
+          <li><a href="tel:+254795716730">0795 716 730</a></li>
+          <li><a href="mailto:michaelkey394@gmail.com">michaelkey394@gmail.com</a></li>
+          <li>Kimbo, Ruiru, Kenya</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> EM'S Soft-Tech Solutions Kenya. All rights reserved.</span>
+<span>Founded 2025 · Kimbo, Ruiru · <a href="#quote">Get a Free Quote</a> · <a href="privacy.html">Privacy Policy</a></span>    </div>
+  </div>
+</footer>
+
+<!-- FLOATING -->
+<a href="https://wa.me/254795716730?text=Hi%20EM'S%20Soft-Tech." target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <span class="tip">Chat with us</span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2s-.7.9-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5s0-.4 0-.5c-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/><path d="M12 2A10 10 0 002 12c0 1.8.5 3.4 1.3 4.9L2 22l5.3-1.4A10 10 0 1012 2z"/></svg>
+</a>
+
+<button class="back-top" id="backTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<!-- STYLE SWITCHER (kept for preview) -->
+<div class="switcher" role="group" aria-label="Switch style">
+  <button data-set-style="a" class="active">Corporate</button>
+  <button data-set-style="c">Editorial</button>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lbClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+  <div class="lb-inner">
+    <div class="ph lb-media" id="lbMedia">[ PROJECT IMAGE ]</div>
+    <div class="lb-body"><div class="p-cat" id="lbCat"></div><h3 id="lbTitle">Title</h3><p id="lbDesc">Description</p></div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Done</div>
+
+<script>
+(function(){
+  'use strict';
+  var WA_NUMBER='254795716730', EMAIL='michaelkey394@gmail.com';
+  var $=function(s,c){return (c||document).querySelector(s);};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+
+  $('#year').textContent=new Date().getFullYear();
+
+  /* ---------- STYLE SWITCHER (default: A) ---------- */
+  var root=document.documentElement;
+  var styleBtns=$$('[data-set-style]');
+  function setStyle(s){
+    root.setAttribute('data-style',s);
+    styleBtns.forEach(function(b){b.classList.toggle('active',b.getAttribute('data-set-style')===s);});
+    try{localStorage.setItem('ems-style',s);}catch(e){}
+  }
+  styleBtns.forEach(function(b){b.addEventListener('click',function(){setStyle(b.getAttribute('data-set-style'));});});
+  setStyle(root.getAttribute('data-style')||'a');
+
+  /* ---------- THEME (default: light) ---------- */
+  $('#themeToggle').addEventListener('click',function(){
+    var n=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',n);
+    try{localStorage.setItem('ems-theme',n);}catch(e){}
+  });
+
+  /* ---------- TOAST ---------- */
+  var toastEl=$('#toast'),tT;
+  function toast(m){toastEl.textContent=m;toastEl.classList.add('show');clearTimeout(tT);tT=setTimeout(function(){toastEl.classList.remove('show');},2600);}
+
+  /* ---------- NAV ---------- */
+  var navToggle=$('#navToggle'),navMenu=$('#navMenu');
+  navToggle.addEventListener('click',function(){navMenu.classList.toggle('open');navToggle.classList.toggle('active');});
+  $$('#navMenu a').forEach(function(a){a.addEventListener('click',function(){navMenu.classList.remove('open');navToggle.classList.remove('active');});});
+
+  /* ---------- SCROLL ---------- */
+  var header=$('#header'),progress=$('#progress'),backTop=$('#backTop'),tick=false;
+  function onScroll(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    var y=window.scrollY||window.pageYOffset;
+    progress.style.width=(h>0?(y/h)*100:0)+'%';
+    header.classList.toggle('scrolled',y>10);
+    backTop.classList.toggle('show',y>600);
+    tick=false;
+  }
+  window.addEventListener('scroll',function(){if(!tick){requestAnimationFrame(onScroll);tick=true;}},{passive:true});
+  onScroll();
+  backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  /* ---------- ACTIVE NAV ---------- */
+  var navLinks=$$('#navMenu a[href^="#"]');
+  var navIO=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(en.isIntersecting){
+        var id=en.target.id;
+        navLinks.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+id);});
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  $$('section[id]').forEach(function(s){navIO.observe(s);});
+
+  /* ---------- REVEAL ---------- */
+  var rIO=new IntersectionObserver(function(es){
+    es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');rIO.unobserve(en.target);}});
+  },{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  $$('.reveal').forEach(function(el){rIO.observe(el);});
+
+  /* ---------- COUNTERS ---------- */
+  function animate(el){
+    var t=parseFloat(el.getAttribute('data-count'))||0;
+    var s=el.getAttribute('data-suffix')||'';
+    var dur=1600,st=null;
+    function tk(ts){
+      if(!st)st=ts;
+      var p=Math.min((ts-st)/dur,1);
+      var e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(t*e)+s;
+      if(p<1)requestAnimationFrame(tk);
+    }
+    requestAnimationFrame(tk);
+  }
+  var cIO=new IntersectionObserver(function(es){
+    es.forEach(function(en){if(en.isIntersecting){animate(en.target);cIO.unobserve(en.target);}});
+  },{threshold:.5});
+  $$('[data-count]').forEach(function(el){cIO.observe(el);});
+
+  /* ---------- PORTFOLIO FILTER ---------- */
+  $$('.filter-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      $$('.filter-btn').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      var f=b.getAttribute('data-filter');
+      $$('.p-item').forEach(function(i){i.style.display=(f==='all'||i.getAttribute('data-cat')===f)?'':'none';});
+    });
+  });
+
+  /* ---------- LIGHTBOX ---------- */
+  var lb=$('#lightbox'),lbM=$('#lbMedia'),lbT=$('#lbTitle'),lbD=$('#lbDesc'),lbC=$('#lbCat');
+  function openLb(item){
+    var ph=item.querySelector('.ph');
+    lbM.textContent=ph?ph.textContent.trim():'[ PROJECT IMAGE ]';
+    lbT.textContent=item.getAttribute('data-title')||'Project';
+    lbD.textContent=item.getAttribute('data-desc')||'';
+    lbC.textContent=item.querySelector('.p-cat')?item.querySelector('.p-cat').textContent:'';
+    lb.classList.add('open');document.body.style.overflow='hidden';
+  }
+  function closeLb(){lb.classList.remove('open');document.body.style.overflow='';}
+  $$('.p-item').forEach(function(i){i.addEventListener('click',function(){openLb(i);});});
+  $('#lbClose').addEventListener('click',closeLb);
+  lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb();});
+
+  /* ---------- TESTIMONIALS ---------- */
+  var track=$('#tTrack'),slides=$$('.t-slide',track),dotsWrap=$('#tDots'),idx=0,auto;
+  slides.forEach(function(_,i){
+    var d=document.createElement('button');
+    d.className='t-dot'+(i===0?' active':'');
+    d.setAttribute('aria-label','Go to review '+(i+1));
+    d.addEventListener('click',function(){go(i);});
+    dotsWrap.appendChild(d);
+  });
+  var dots=$$('.t-dot',dotsWrap);
+  function go(n){idx=(n+slides.length)%slides.length;track.style.transform='translateX('+(-idx*100)+'%)';dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});}
+  function startAuto(){auto=setInterval(function(){go(idx+1);},6500);}
+  function stopAuto(){clearInterval(auto);}
+  $('#tNext').addEventListener('click',function(){go(idx+1);stopAuto();startAuto();});
+  $('#tPrev').addEventListener('click',function(){go(idx-1);stopAuto();startAuto();});
+  var tv=$('.t-viewport');
+  tv.addEventListener('mouseenter',stopAuto);tv.addEventListener('mouseleave',startAuto);
+  startAuto();
+  var tx0=null;
+  tv.addEventListener('touchstart',function(e){tx0=e.touches[0].clientX;},{passive:true});
+  tv.addEventListener('touchend',function(e){if(tx0===null)return;var dx=e.changedTouches[0].clientX-tx0;if(Math.abs(dx)>45)go(dx<0?idx+1:idx-1);tx0=null;},{passive:true});
+
+  /* ---------- FAQ ---------- */
+  $$('.faq-q').forEach(function(q){
+    q.addEventListener('click',function(){
+      var it=q.parentElement,isOpen=it.classList.contains('open');
+      $$('.faq-item').forEach(function(i){i.classList.remove('open');});
+      if(!isOpen)it.classList.add('open');
+    });
+  });
+
+  /* ---------- COPY ---------- */
+  $$('.copy-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.getAttribute('data-copy');
+      function done(){toast('Copied: '+t);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(fb);}else fb();
+      function fb(){var x=document.createElement('textarea');x.value=t;x.style.position='fixed';x.style.opacity='0';document.body.appendChild(x);x.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(x);}
+    });
+  });
+
+  /* ---------- NEWSLETTER ---------- */
+  $('#newsForm').addEventListener('submit',function(e){
+    e.preventDefault();var i=this.querySelector('input');if(!i.value.trim())return;toast("Thanks! We'll be in touch.");i.value='';
+  });
+
+  /* ---------- QUOTE FORM ---------- */
+  var form=$('#quoteForm'),fsteps=$$('.fstep',form);
+  var stepLabel=$('#stepLabel'),stepFill=$('#stepFill');
+  var prevBtn=$('#prevBtn'),nextBtn=$('#nextBtn'),mainNav=$('#mainNav');
+  var current=0;
+
+  function renderStep(){
+    fsteps.forEach(function(s,i){s.classList.toggle('active',i===current);});
+    stepLabel.textContent='Step '+(current+1)+' of '+fsteps.length;
+    stepFill.style.width=((current+1)/fsteps.length)*100+'%';
+    prevBtn.style.visibility=current===0?'hidden':'visible';
+    mainNav.style.display=current===fsteps.length-1?'none':'flex';
+    if(current===fsteps.length-1)buildSummary();
+    var shell=$('.quote-shell');
+    var top=shell.getBoundingClientRect().top+window.scrollY-100;
+    if(window.scrollY>top+20||window.scrollY<top-200)window.scrollTo({top:top,behavior:'smooth'});
+  }
+  function markErr(f,e){if(!f)return;f.classList.toggle('error',e);}
+  function validateStep(step){
+    var ok=true;
+    $$('[data-req]',step).forEach(function(el){
+      var w=el.closest('.field'),v=(el.value||'').trim(),valid=v.length>0;
+      if(valid&&el.getAttribute('data-type')==='email')valid=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      if(!valid){ok=false;markErr(w,true);}else markErr(w,false);
+    });
+    var g=$('[data-req-group]',step);
+    if(g){
+      var any=$$('input[data-req-group]:checked',step).length>0;
+      if(!any){ok=false;markErr($('#svcField'),true);}else markErr($('#svcField'),false);
+    }
+    if(!ok)toast('Please complete the highlighted fields.');
+    return ok;
+  }
+  form.addEventListener('input',function(e){var w=e.target.closest('.field');if(w)w.classList.remove('error');});
+  form.addEventListener('change',function(e){var w=e.target.closest('.field');if(w)w.classList.remove('error');});
+
+  nextBtn.addEventListener('click',function(){if(!validateStep(fsteps[current]))return;if(current<fsteps.length-1){current++;renderStep();}});
+  prevBtn.addEventListener('click',function(){if(current>0){current--;renderStep();}});
+  $('#backTo3').addEventListener('click',function(){current=2;renderStep();});
+
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  function buildSummary(){
+    var svc=$$('input[name="services"]:checked',form).map(function(i){return i.value;}).join(', ')||'—';
+    var bEl=$('input[name="budget"]:checked',form);
+    var pEl=$('input[name="contactPref"]:checked',form);
+    var rows=[
+      ['Services',svc],
+      ['Budget',bEl?bEl.value:'Not specified'],
+      ['Details',$('#details').value||'—'],
+      ['Timeline',$('#timeline').value||'Not specified'],
+      ['Existing site',$('#existing').value||'Not specified'],
+      ['Reference',$('#reference').value||'—'],
+      ['Name',$('#name').value||'—'],
+      ['Business',$('#business').value||'—'],
+      ['Email',$('#email').value||'—'],
+      ['Phone',$('#phone').value||'—'],
+      ['Contact via',pEl?pEl.value:'—']
+    ];
+    $('#summary').innerHTML=rows.map(function(r){return'<div class="summary-row"><b>'+esc(r[0])+'</b><span>'+esc(r[1])+'</span></div>';}).join('');
+  }
+
+  function buildMessage(){
+    var svc=$$('input[name="services"]:checked',form).map(function(i){return i.value;}).join(', ')||'Not specified';
+    var bEl=$('input[name="budget"]:checked',form);
+    var pEl=$('input[name="contactPref"]:checked',form);
+    var lines=[
+      '*NEW QUOTE REQUEST*',
+      "*EM'S Soft-Tech Solutions Kenya",
+      '',
+      '*Services:* '+svc,
+      '*Budget:* '+(bEl?bEl.value:'Not specified'),
+      '*Timeline:* '+($('#timeline').value||'Not specified'),
+      '*Existing site/app:* '+($('#existing').value||'Not specified'),
+      '',
+      '*Project details:*',
+      ($('#details').value||'—'),
+      '',
+      $('#reference').value?'*References:* '+$('#reference').value:'',
+      '',
+      '*--- Contact ---*',
+      '*Name:* '+($('#name').value||'—'),
+      $('#business').value?'*Business:* '+$('#business').value:'',
+      '*Email:* '+($('#email').value||'—'),
+      '*Phone:* '+($('#phone').value||'—'),
+      '*Preferred contact:* '+(pEl?pEl.value:'—'),
+      '',
+      "Sent from the EM'S Soft-Tech website."
+    ].filter(function(l){return l!=='';});
+    return lines.join('\n');
+  }
+
+  function validateAll(){
+    for(var i=0;i<fsteps.length-1;i++){
+      if(!validateStep(fsteps[i])){current=i;renderStep();return false;}
+    }
+    return true;
+  }
+
+  $('#sendWa').addEventListener('click',function(){
+    if(!validateAll())return;
+    window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(buildMessage()),'_blank');
+    toast('Opening WhatsApp…');
+  });
+  $('#sendEmail').addEventListener('click',function(){
+    if(!validateAll())return;
+    var subject='Quote Request — '+($('#name').value||'Website Enquiry');
+    window.location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(buildMessage());
+    toast('Opening your email app…');
+  });
+
+  renderStep();
+})();
+</script>
+
+</body>
+</html>
