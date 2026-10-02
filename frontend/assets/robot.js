@@ -512,14 +512,41 @@
     badgeEl  = document.getElementById('emiBadge');
 
     /* Events */
-    fabEl.addEventListener('click', open);
-    panelEl.querySelector('.emi-close').addEventListener('click', close);
     sendEl.addEventListener('click', submitInput);
     inputEl.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') { e.preventDefault(); submitInput(); }
     });
+
+    /* Global click handling — robust, works even if the panel re-renders */
+    document.addEventListener('click', function (e) {
+      var t = e.target;
+
+      /* Clicked the close button (or anything inside it) */
+      if (t.closest && t.closest('.emi-close')) {
+        e.preventDefault();
+        e.stopPropagation();
+        close();
+        return;
+      }
+
+      /* Clicked the FAB — toggle open/close */
+      if (t.closest && t.closest('.emi-fab')) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (isOpen) { close(); } else { open(); }
+        return;
+      }
+
+      /* Click inside the panel (but not the close button) — do nothing */
+      if (panelEl && panelEl.contains(t)) return;
+
+      /* Click anywhere else while open — close */
+      if (isOpen) close();
+    }, true);
+
+    /* ESC key closes */
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && isOpen) close();
+      if (e.key === 'Escape' && isOpen) { e.preventDefault(); close(); }
     });
   }
 
@@ -650,6 +677,7 @@
      OPEN / CLOSE
      ═════════════════════════════════════════════════════════════════ */
   function open() {
+    if (isOpen) return;
     isOpen = true;
     panelEl.classList.add('open');
     if (badgeEl) badgeEl.classList.add('hide');
@@ -673,6 +701,8 @@
   function close() {
     isOpen = false;
     panelEl.classList.remove('open');
+    if (inputEl && document.activeElement === inputEl) inputEl.blur();
+    if (badgeEl) badgeEl.classList.add('hide');
   }
 
   /* ═════════════════════════════════════════════════════════════════
