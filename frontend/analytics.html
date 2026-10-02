@@ -1,0 +1,31 @@
+<!--to review later!*
+//this is How future analytics will plug in -->
+<!-- Google Analytics — gated behind cookie consent -->
+<script>
+  (function () {
+    var GA_ID = 'G-XXXXXXXXXX'; /* REPLACE with your real ID */
+    var loaded = false;
+
+    function loadGA() {
+      if (loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', GA_ID, { anonymize_ip: true });
+    }
+
+    /* Only load if consent already given, or when it's given */
+    function check() {
+      if (window.CookieConsent && window.CookieConsent.hasConsent('analytics')) {
+        loadGA();
+      }
+    }
+    window.addEventListener('load', check);
+    if (window.CookieConsent) window.CookieConsent.onChange(check);
+  })();
+</script>

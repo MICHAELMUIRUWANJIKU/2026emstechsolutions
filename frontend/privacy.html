@@ -234,6 +234,7 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:36px 0}
 .switcher button.active{background:var(--brand-grad);color:var(--on-brand)}
 @media(max-width:480px){ .switcher{bottom:12px} .switcher button{padding:.4rem .7rem;font-size:.66rem} }
 </style>
+<script src="cookie-consent.js" defer></script>
 </head>
 
 <body>
@@ -368,7 +369,13 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:36px 0}
     <!-- ===== 5 ===== -->
     <section class="pp-section" id="s5">
       <h2><span class="num">5</span> Cookies &amp; analytics</h2>
-      <p>This website uses <strong>very minimal cookies</strong>. Specifically:</p>
+<p>When you first visit this website, a cookie consent banner appears. You can accept all cookies, reject non-essential ones, or manage them individually. Your choice is stored in your browser's <code>localStorage</code> and can be changed at any time via the "Cookie Preferences" link in the footer.</p>
+<p>This website uses the following categories of cookies:</p>
+<ul>
+  <li><strong>Strictly necessary</strong> — always active. We store your theme (light/dark) and style preference in your browser's <code>localStorage</code>. These never leave your device and are not used for tracking.</li>
+  <li><strong>Analytics</strong> — currently <strong>not active</strong>. If enabled in future, they will only load after you give consent, and will collect anonymised usage statistics.</li>
+  <li><strong>Marketing</strong> — currently <strong>not active</strong>. If enabled in future, they will only load after you give consent.</li>
+</ul>
       <ul>
         <li><strong>Preference cookies</strong> — we store your chosen theme (light/dark) and style preference in your browser's <code>localStorage</code>. These are not sent to any server and are not used for tracking.</li>
         <li><strong>Analytics cookies (optional, not yet enabled)</strong> — if we enable Google Analytics in future, you will see a cookie consent notice before any analytics cookie is set. You will always be able to decline.</li>
@@ -521,15 +528,15 @@ footer{background:var(--bg-2);border-top:1px solid var(--border);padding:36px 0}
 <footer>
   <div class="wrap foot-mini">
     <span>© <span id="year"></span> EM'S Soft-Tech Solutions Kenya. All rights reserved.</span>
-    <span><a href="index.html">Home</a> · <a href="index.html#contact">Contact</a> · <a href="privacy.html">Privacy Policy</a></span>
+    <span><a href="index.html">Home</a> · <a href="index.html#contact">Contact</a> · <a href="privacy.html">Privacy Policy</a>  <a href="#" data-cookie-settings>Cookie Preferences</a>
+</span>
   </div>
 </footer>
 
 <!-- STYLE SWITCHER -->
 <div class="switcher" role="group" aria-label="Switch style">
-  <button data-set-style="a" class="active">A · Corporate</button>
-  <button data-set-style="b">B · Neo Dark</button>
-  <button data-set-style="c">C · Editorial</button>
+  <button data-set-style="a" class="active">Home Theme</button>
+  <button data-set-style="c">Orange Theme</button>
 </div>
 
 <script>
