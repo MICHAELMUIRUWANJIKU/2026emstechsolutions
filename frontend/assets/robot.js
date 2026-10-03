@@ -267,7 +267,7 @@
 
     /* --- Fallback (honest) --- */
     return {
-      text: 'I want to be honest — I\'m not sure about that one. I know our services, pricing, hours, location, process and reviews really well. For anything else, our team can help directly.',
+      text: 'Let me be honest — I\'m not sure about that one. I know our services, pricing, hours, location, process and reviews really well. For anything else, our team can help directly.Click talk to human to talk to our team.',
       chips: ['Services', 'Pricing', 'WhatsApp a human']
     };
   }
@@ -624,9 +624,9 @@
       'Where are you?'     : 'where are you located',
       'Contact us'         : 'how do I contact you',
       'Talk to a human'    : 'talk to a human',
-      'WhatsApp a human'   : function () { openWhatsApp('Hi Em\'s Tech, I\'d like to speak to someone.'); },
-      'WhatsApp us'        : function () { openWhatsApp('Hi Em\'s Tech, I have a question.'); },
-      'WhatsApp now'       : function () { openWhatsApp('Hi Em\'s Tech, I have a question.'); },
+      'WhatsApp a human'   : function () { openWhatsApp('Hi Em\'s Tech, I have been redirected by EMI I\'d like to speak to someone about '); },
+      'WhatsApp us'        : function () { openWhatsApp('Hi Em\'s Tech, I would like to enquire about '); },
+      'WhatsApp now'       : function () { openWhatsApp('Hi Em\'s Tech, I would like to enquire about.'); },
       'Call now'           : function () { window.location.href = 'tel:+254795716730'; },
       'Open in Maps'       : function () { window.open('https://maps.google.com/?q=Kimbo,+Ruiru,+Kenya', '_blank'); },
       'About the company'  : 'tell me about the company',
