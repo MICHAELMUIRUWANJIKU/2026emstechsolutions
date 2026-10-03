@@ -321,16 +321,16 @@ header.scrolled{border-bottom-color:var(--border);box-shadow:var(--shadow-sm)}
 }
 .hero-slide.active{
   opacity:1;
-  animation:kenburns 8s ease-out forwards;
+  animation:kenburns 15s ease-out forwards;
 }
 .hero-slide:nth-child(even).active{animation-name:kenburns-alt}
 @keyframes kenburns{
-  0%{transform:scale(1.08) translate(0,0)}
-  100%{transform:scale(1.22) translate(-1.5%,-1%)}
+  0%{transform:scale(1.00) translate(0,0)}
+  100%{transform:scale(1.10) translate(-1.5%,-1%)}
 }
 @keyframes kenburns-alt{
   0%{transform:scale(1.08) translate(0,0)}
-  100%{transform:scale(1.22) translate(1.5%,1%)}
+  100%{transform:scale(1.20) translate(1.5%,1%)}
 }
 .hero-overlay{
   position:absolute;inset:0;z-index:2;
