@@ -54,7 +54,7 @@ h3{font-size:clamp(1.05rem,2vw,1.28rem)}
 .btn-wa:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(37,211,102,.45)}
 .btn-sm{padding:.62rem 1.15rem;font-size:.85rem}
 
-/* Photo placeholders */
+/* Photo */
 /* Photo containers — no gradients, just clean image holders */
 .ph{
   position:relative;

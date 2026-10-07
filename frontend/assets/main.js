@@ -255,7 +255,7 @@
     return true;
   }
 
-  function goToThankYou(via){
+    function goToThankYou(via, serverReference){
     var params = new URLSearchParams();
     var n = ($('#name').value||'').trim();
     var svcArr = $$('input[name="services"]:checked',form).map(function(i){return i.value;});
@@ -264,25 +264,86 @@
     if(via) params.set('via', via);
     if(svcArr.length) params.set('services', svcArr.join(', '));
     if(bEl) params.set('budget', bEl.value);
-    /* Generate a reference the user can quote */
-    params.set('ref', 'EMS-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000));
+    params.set('ref', serverReference || ('EMS-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000)));
     setTimeout(function(){
       window.location.href = 'thank-you.html?' + params.toString();
     }, 1200);
   }
 
-  $('#sendWa').addEventListener('click',function(){
-    if(!validateAll())return;
-    window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(buildMessage()),'_blank');
-    toast('Opening WhatsApp…');
-    goToThankYou('whatsapp');
+    /* ---------- SAVE TO BACKEND ---------- */
+  function saveBooking(submittedVia){
+    var payload = {
+      name: ($('#name').value || '').trim(),
+      email: ($('#email').value || '').trim(),
+      phone: ($('#phone').value || '').trim(),
+      business: ($('#business').value || '').trim(),
+      services: $$('input[name="services"]:checked', form).map(function(i){ return i.value; }),
+      budget: (function(){ var el = $('input[name="budget"]:checked', form); return el ? el.value : ''; })(),
+      timeline: $('#timeline').value || '',
+      existing_site: $('#existing').value || '',
+      reference_sites: $('#reference').value || '',
+      details: ($('#details').value || '').trim(),
+      contact_pref: (function(){ var el = $('input[name="contactPref"]:checked', form); return el ? el.value : 'WhatsApp'; })(),
+      submitted_via: submittedVia
+    };
+    return fetch('/api/submit-booking', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(res){
+      if (!res.ok) {
+        return res.json().catch(function(){ return {}; }).then(function(err){
+          throw new Error(err.error || 'Submission failed');
+        });
+      }
+      return res.json();
+    });
+  }
+
+  $('#sendWa').addEventListener('click', function(){
+    if (!validateAll()) return;
+    var btn = this;
+    var original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = 'Sending…';
+
+    saveBooking('whatsapp').then(function(result){
+      window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(buildMessage()), '_blank');
+      toast('Opening WhatsApp…');
+      goToThankYou('whatsapp', result.reference);
+    }).catch(function(err){
+      console.error(err);
+      toast('Saving issue — opening WhatsApp directly…');
+      window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(buildMessage()), '_blank');
+      goToThankYou('whatsapp');
+    }).finally(function(){
+      btn.disabled = false;
+      btn.innerHTML = original;
+    });
   });
-  $('#sendEmail').addEventListener('click',function(){
-    if(!validateAll())return;
-    var subject='Quote Request — '+($('#name').value||'Website Enquiry');
-    window.location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(buildMessage());
-    toast('Opening your email app…');
-    goToThankYou('email');
+
+  $('#sendEmail').addEventListener('click', function(){
+    if (!validateAll()) return;
+    var btn = this;
+    var original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = 'Sending…';
+
+    saveBooking('email').then(function(result){
+      var subject = 'Quote Request — ' + ($('#name').value || 'Website Enquiry');
+      window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(buildMessage());
+      toast('Opening your email app…');
+      goToThankYou('email', result.reference);
+    }).catch(function(err){
+      console.error(err);
+      toast('Saving issue — opening email directly…');
+      var subject = 'Quote Request — ' + ($('#name').value || 'Website Enquiry');
+      window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(buildMessage());
+      goToThankYou('email');
+    }).finally(function(){
+      btn.disabled = false;
+      btn.innerHTML = original;
+    });
   });
 
   renderStep();
