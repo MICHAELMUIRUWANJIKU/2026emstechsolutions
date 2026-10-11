@@ -265,7 +265,7 @@
     if(svcArr.length) params.set('services', svcArr.join(', '));
     if(bEl) params.set('budget', bEl.value);
     params.set('ref', 'EMS-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000));
-    var tyUrl = 'thank-you.html?' + params.toString();
+    var tyUrl = 'thankyou.html?' + params.toString();
 
     /* Open thank-you in a NEW tab so the site tab stays intact.
        If the browser blocks the popup, fall back to same-tab navigation. */
