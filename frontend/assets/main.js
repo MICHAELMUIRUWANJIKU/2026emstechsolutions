@@ -255,7 +255,7 @@
     return true;
   }
 
-     function goToThankYou(via){
+    function goToThankYou(via){
     var params = new URLSearchParams();
     var n = ($('#name').value||'').trim();
     var svcArr = $$('input[name="services"]:checked',form).map(function(i){return i.value;});
@@ -264,11 +264,16 @@
     if(via) params.set('via', via);
     if(svcArr.length) params.set('services', svcArr.join(', '));
     if(bEl) params.set('budget', bEl.value);
-    /* Generate a reference the user can quote */
     params.set('ref', 'EMS-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000));
-    setTimeout(function(){
-      window.location.href = 'thankyou.html?' + params.toString();
-    }, 1200);
+    var tyUrl = 'thank-you.html?' + params.toString();
+
+    /* Open thank-you in a NEW tab so the site tab stays intact.
+       If the browser blocks the popup, fall back to same-tab navigation. */
+    var tyTab = null;
+    try { tyTab = window.open(tyUrl, '_blank'); } catch(e) { tyTab = null; }
+    if (!tyTab || tyTab.closed) {
+      window.location.href = tyUrl;
+    }
   }
 
       $('#sendWa').addEventListener('click',function(){
