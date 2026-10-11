@@ -290,28 +290,24 @@
          so the browser has time to hand off to the WhatsApp app. */
       toast('Opening WhatsApp…');
       window.location.href = waUrl;
-      /* If the user comes back, they'll still end up on thank-you */
+      /* If the user comes back, they'll still end up on thankyou */
       setTimeout(function(){ goToThankYou('whatsapp'); }, 5000);
     }
   });
 
-  $('#sendEmail').addEventListener('click',function(){
+   $('#sendEmail').addEventListener('click',function(){
     if(!validateAll())return;
 
     var subject = 'Quote Request — '+($('#name').value||'Website Enquiry');
     var mailUrl = 'mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(buildMessage());
 
-    var mailWindow = null;
-    try { mailWindow = window.open(mailUrl, '_blank'); } catch(e) { mailWindow = null; }
+    toast('Opening your email app…');
 
-    if (mailWindow && !mailWindow.closed) {
-      toast('Opening your email app…');
-      setTimeout(function(){ goToThankYou('email'); }, 2500);
-    } else {
-      toast('Opening your email app…');
-      window.location.href = mailUrl;
-      setTimeout(function(){ goToThankYou('email'); }, 5000);
-    }
+    /* mailto: must be triggered via location.href — window.open() doesn't work for mailto */
+    window.location.href = mailUrl;
+
+    /* Give the OS 2.5s to open the email client, then redirect to thank-you */
+    setTimeout(function(){ goToThankYou('email'); }, 2500);
   });
   renderStep();
 
