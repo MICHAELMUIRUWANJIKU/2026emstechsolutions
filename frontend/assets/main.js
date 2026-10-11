@@ -299,15 +299,29 @@
     if(!validateAll())return;
 
     var subject = 'Quote Request — '+($('#name').value||'Website Enquiry');
-    var mailUrl = 'mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(buildMessage());
+    var body = buildMessage();
 
-    toast('Opening your email app…');
+    /* Gmail compose URL — works for anyone with a Google account, regardless of OS email setup */
+    var gmailUrl = 'https://mail.google.com/mail/?view=cm&fs=1'
+                 + '&to=' + encodeURIComponent(EMAIL)
+                 + '&su=' + encodeURIComponent(subject)
+                 + '&body=' + encodeURIComponent(body);
 
-    /* mailto: must be triggered via location.href — window.open() doesn't work for mailto */
-    window.location.href = mailUrl;
+    toast('Opening Gmail…');
 
-    /* Give the OS 2.5s to open the email client, then redirect to thank-you */
-    setTimeout(function(){ goToThankYou('email'); }, 2500);
+    /* Open Gmail compose in a new tab */
+    var gmailWindow = null;
+    try { gmailWindow = window.open(gmailUrl, '_blank'); } catch(e) { gmailWindow = null; }
+
+    if (gmailWindow && !gmailWindow.closed) {
+      /* Popup succeeded — Gmail tab is opening, redirect our tab after 2.5s */
+      setTimeout(function(){ goToThankYou('email'); }, 2500);
+    } else {
+      /* Popup blocked — navigate current tab to Gmail compose */
+      window.location.href = gmailUrl;
+      /* If the user comes back, still land on thank-you */
+      setTimeout(function(){ goToThankYou('email'); }, 5000);
+    }
   });
   renderStep();
 
