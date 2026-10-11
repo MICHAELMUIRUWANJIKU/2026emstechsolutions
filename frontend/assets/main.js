@@ -274,17 +274,25 @@
       $('#sendWa').addEventListener('click',function(){
     if(!validateAll())return;
 
-    /* Open WhatsApp synchronously, inside the click handler */
     var waUrl = 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(buildMessage());
-    var waWindow = window.open(waUrl, '_blank');
 
-    /* If the browser blocked it, fall back to same-tab navigation */
-    if (!waWindow) {
+    /* Try to open WhatsApp in a new tab */
+    var waWindow = null;
+    try { waWindow = window.open(waUrl, '_blank'); } catch(e) { waWindow = null; }
+
+    if (waWindow && !waWindow.closed) {
+      /* Popup succeeded — give WhatsApp time to load, then redirect */
+      toast('Opening WhatsApp…');
+      setTimeout(function(){ goToThankYou('whatsapp'); }, 2500);
+    } else {
+      /* Popup blocked — navigate the CURRENT tab to WhatsApp.
+         The WhatsApp page will replace our page. We use a longer delay
+         so the browser has time to hand off to the WhatsApp app. */
+      toast('Opening WhatsApp…');
       window.location.href = waUrl;
+      /* If the user comes back, they'll still end up on thank-you */
+      setTimeout(function(){ goToThankYou('whatsapp'); }, 5000);
     }
-
-    toast('Opening WhatsApp…');
-    goToThankYou('whatsapp');
   });
 
   $('#sendEmail').addEventListener('click',function(){
@@ -293,14 +301,17 @@
     var subject = 'Quote Request — '+($('#name').value||'Website Enquiry');
     var mailUrl = 'mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(buildMessage());
 
-    /* Same idea — try a new window first, fall back to same tab */
-    var mailWindow = window.open(mailUrl, '_blank');
-    if (!mailWindow) {
-      window.location.href = mailUrl;
-    }
+    var mailWindow = null;
+    try { mailWindow = window.open(mailUrl, '_blank'); } catch(e) { mailWindow = null; }
 
-    toast('Opening your email app…');
-    goToThankYou('email');
+    if (mailWindow && !mailWindow.closed) {
+      toast('Opening your email app…');
+      setTimeout(function(){ goToThankYou('email'); }, 2500);
+    } else {
+      toast('Opening your email app…');
+      window.location.href = mailUrl;
+      setTimeout(function(){ goToThankYou('email'); }, 5000);
+    }
   });
   renderStep();
 
