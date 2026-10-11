@@ -267,20 +267,38 @@
     /* Generate a reference the user can quote */
     params.set('ref', 'EMS-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000));
     setTimeout(function(){
-      window.location.href = 'thank-you.html?' + params.toString();
+      window.location.href = 'thankyou.html?' + params.toString();
     }, 1200);
   }
 
-   $('#sendWa').addEventListener('click',function(){
+      $('#sendWa').addEventListener('click',function(){
     if(!validateAll())return;
-    window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(buildMessage()),'_blank');
+
+    /* Open WhatsApp synchronously, inside the click handler */
+    var waUrl = 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(buildMessage());
+    var waWindow = window.open(waUrl, '_blank');
+
+    /* If the browser blocked it, fall back to same-tab navigation */
+    if (!waWindow) {
+      window.location.href = waUrl;
+    }
+
     toast('Opening WhatsApp…');
     goToThankYou('whatsapp');
   });
+
   $('#sendEmail').addEventListener('click',function(){
     if(!validateAll())return;
-    var subject='Quote Request — '+($('#name').value||'Website Enquiry');
-    window.location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(buildMessage());
+
+    var subject = 'Quote Request — '+($('#name').value||'Website Enquiry');
+    var mailUrl = 'mailto:'+EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(buildMessage());
+
+    /* Same idea — try a new window first, fall back to same tab */
+    var mailWindow = window.open(mailUrl, '_blank');
+    if (!mailWindow) {
+      window.location.href = mailUrl;
+    }
+
     toast('Opening your email app…');
     goToThankYou('email');
   });
