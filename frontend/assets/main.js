@@ -266,7 +266,7 @@
     if(bEl) params.set('budget', bEl.value);
     params.set('ref', serverReference || ('EMS-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000)));
     setTimeout(function(){
-      window.location.href = 'thank-you.html?' + params.toString();
+      window.location.href = 'thankyou.html?' + params.toString();
     }, 1200);
   }
 
