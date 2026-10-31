@@ -255,26 +255,51 @@
     return true;
   }
 
-    function goToThankYou(via){
-    var params = new URLSearchParams();
-    var n = ($('#name').value||'').trim();
-    var svcArr = $$('input[name="services"]:checked',form).map(function(i){return i.value;});
-    var bEl = $('input[name="budget"]:checked',form);
-    if(n) params.set('name', n);
-    if(via) params.set('via', via);
-    if(svcArr.length) params.set('services', svcArr.join(', '));
-    if(bEl) params.set('budget', bEl.value);
-    params.set('ref', 'EMS-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000));
-    var tyUrl = 'thankyou.html?' + params.toString();
+  function goToThankYou(via, serverReference){
+  var params = new URLSearchParams();
+  var n = ($('#name').value||'').trim();
+  var svcArr = $$('input[name="services"]:checked',form).map(function(i){return i.value;});
+  var bEl = $('input[name="budget"]:checked',form);
+  if(n) params.set('name', n);
+  if(via) params.set('via', via);
+  if(svcArr.length) params.set('services', svcArr.join(', '));
+  if(bEl) params.set('budget', bEl.value);
+  // Use server reference if provided, else generate one client-side
+  params.set('ref', serverReference || ('EMS-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000)));
+  setTimeout(function(){
+    window.location.href = 'thankyou.html?' + params.toString();
+  }, 1200);
+}
 
-    /* Open thank-you in a NEW tab so the site tab stays intact.
-       If the browser blocks the popup, fall back to same-tab navigation. */
-    var tyTab = null;
-    try { tyTab = window.open(tyUrl, '_blank'); } catch(e) { tyTab = null; }
-    if (!tyTab || tyTab.closed) {
-      window.location.href = tyUrl;
-    }
+  /* ---------- SUBMIT TO BACKEND ---------- */
+async function saveBooking(submittedVia) {
+  const payload = {
+    name: ($('#name').value || '').trim(),
+    email: ($('#email').value || '').trim(),
+    phone: ($('#phone').value || '').trim(),
+    business: ($('#business').value || '').trim(),
+    services: $$('input[name="services"]:checked', form).map(function(i){ return i.value; }),
+    budget: (function(){ var el = $('input[name="budget"]:checked', form); return el ? el.value : ''; })(),
+    timeline: $('#timeline').value || '',
+    existing_site: $('#existing').value || '',
+    reference_sites: $('#reference').value || '',
+    details: ($('#details').value || '').trim(),
+    contact_pref: (function(){ var el = $('input[name="contactPref"]:checked', form); return el ? el.value : 'WhatsApp'; })(),
+    submitted_via: submittedVia
+  };
+
+  const res = await fetch('/api/submit-booking', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(function(){ return {}; });
+    throw new Error(err.error || 'Submission failed');
   }
+  return await res.json();
+}
 
       $('#sendWa').addEventListener('click',function(){
     if(!validateAll())return;
@@ -324,11 +349,14 @@
     } else {
       /* Popup blocked — navigate current tab to Gmail compose */
       window.location.href = gmailUrl;
-      /* If the user comes back, still land on thank-you */
+      /* If the user comes back, still land on thankyou */
       setTimeout(function(){ goToThankYou('email'); }, 5000);
     }
   });
+
   renderStep();
+
+  
 
 /* ═══════════════════════════════════════════════════════════════
    HERO KEN BURNS SLIDER

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin · EM'S Tech Solutions Kenya</title>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#1e40af" />
+
+<link rel="icon" href="images/favicon/EMSTECHLOGOorange32x32.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+
+<!-- Supabase JS client (browser build) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     LOGIN SCREEN
+     ═══════════════════════════════════════════════════════════════ -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="login-brand">
+      <div class="logo-mark"><img src="images/favicon/EMSTECHLOGOorange32x32.png" alt="Ems tech logo-mark"></div>
+      <div>
+        <h1>EM'S Tech Solutions Admin</h1>
+        <p>Sign in here!</p>
+      </div>
+    </div>
+
+    <form id="loginForm" class="login-form">
+      <label>
+        <span>Email</span>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required autocomplete="email" />
+      </label>
+      <label>
+        <span>Password</span>
+        <input type="password" id="loginPassword" placeholder="Your password" required autocomplete="current-password" minlength="6" />
+      </label>
+      <div id="loginError" class="login-error" role="alert"></div>
+      <button type="submit" class="btn btn-primary btn-block" id="loginBtn">
+        Sign In
+      </button>
+    </form>
+
+    <p class="login-help">
+      Forgot password? Contact Em's @ <a href="mailto:michaelkey394@gmail.com">michaelkey394@gmail.com</a>
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     DASHBOARD
+     ═══════════════════════════════════════════════════════════════ -->
+<div id="dashboard" class="dashboard" style="display:none">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark"><img src="images/favicon/EMSTECHLOGOorange32x32.png" alt=""></div>
+      <div>
+        <b>EM'S Tech Solutions Kenya</b>
+        <small>Admin Panel</small>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-tab="bookings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <span>Bookings</span>
+        <span class="badge" id="bookingsCount">0</span>
+      </button>
+      <button class="nav-item" data-tab="portfolio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
+        <span>Portfolio</span>
+      </button>
+      <button class="nav-item" data-tab="testimonials">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z"/></svg>
+        <span>Testimonials</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar" id="userInitial">M</div>
+        <div>
+          <b id="userEmail">—</b>
+          <small id="userRole">—</small>
+        </div>
+      </div>
+      <a href="index.html" class="btn btn-ghost btn-sm" style="width:100%">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        Back to Site
+      </a>
+      <button id="logoutBtn" class="btn btn-ghost btn-sm" style="width:100%;color:#ef4444;border-color:#fecaca">
+        Sign Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <!-- ═══════════ BOOKINGS TAB ═══════════ -->
+    <section class="tab-panel active" data-panel="bookings">
+      <header class="panel-head">
+        <div>
+          <h2>Bookings</h2>
+          <p>Enquiries submitted through the website</p>
+        </div>
+      </header>
+
+      <div class="toolbar">
+        <div class="filter-pills" id="bookingFilters">
+          <button class="filter active" data-status="all">All</button>
+          <button class="filter" data-status="new">New</button>
+          <button class="filter" data-status="contacted">Contacted</button>
+          <button class="filter" data-status="quoted">Quoted</button>
+          <button class="filter" data-status="won">Won</button>
+          <button class="filter" data-status="lost">Lost</button>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="refreshBookings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.5 9a9 9 0 0114.8-3.4L23 10M1 14l4.7 4.4A9 9 0 0020.5 15"/></svg>
+          Refresh
+        </button>
+      </div>
+
+      <div id="bookingsList" class="booking-list">
+        <div class="empty-state">Loading bookings…</div>
+      </div>
+    </section>
+
+    <!-- ═══════════ PORTFOLIO TAB ═══════════ -->
+    <section class="tab-panel" data-panel="portfolio">
+      <header class="panel-head">
+        <div>
+          <h2>Portfolio</h2>
+          <p>Manage project cards on clients'-site</p>
+        </div>
+        <button class="btn btn-primary btn-sm" id="addPortfolioBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          New Project
+        </button>
+      </header>
+
+      <div id="portfolioList" class="content-grid">
+        <div class="empty-state">Loading portfolio…</div>
+      </div>
+    </section>
+
+    <!-- ═══════════ TESTIMONIALS TAB ═══════════ -->
+    <section class="tab-panel" data-panel="testimonials">
+      <header class="panel-head">
+        <div>
+          <h2>Testimonials</h2>
+          <p>Manage client reviews</p>
+        </div>
+        <button class="btn btn-primary btn-sm" id="addTestimonialBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          New Review
+        </button>
+      </header>
+
+      <div id="testimonialsList" class="content-grid">
+        <div class="empty-state">Loading testimonials…</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MODAL (shared for portfolio/testimonial edit)
+     ═══════════════════════════════════════════════════════════════ -->
+<div id="modal" class="modal">
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-panel" id="modalPanel">
+    <button class="modal-close" data-close-modal aria-label="Close">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TOAST
+     ═══════════════════════════════════════════════════════════════ -->
+<div id="toast" class="toast"></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
